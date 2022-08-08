@@ -28,6 +28,8 @@ abstract class Message {
   void send();
 }
 
+/*
+
 class EmailMessage extends Message {
   EmailMessage(IMessageSender messageSender) : super(messageSender);
 
@@ -45,6 +47,7 @@ class TextMessage extends Message {
     messageSender.sendMessage();
   }
 }
+*/
 
 class MessageControl extends Message {
   MessageControl(IMessageSender messageSender) : super(messageSender);
@@ -59,41 +62,11 @@ void main(List<String> args) {
   IMessageSender textMessageSender = TextMessageSender();
   MessageControl messageControl = MessageControl(textMessageSender);
   messageControl.send();
+
+  /*
   IMessageSender emailMessageSender = EmailMessageSender();
   Message textMessage = TextMessage(emailMessageSender);
   textMessage.send();
 
-  var str = jsonEncode(Order());
-  Logger().d(str);
-}
-
-abstract class EntityBase {
-  late String id;
-
-  EntityBase() {
-    id = "sdasdsaddsa";
-  }
-
-  EntityBase.fromJson(Map<String, dynamic> json) : id = json['id'] as String;
-}
-
-class Order extends EntityBase {
-  late List<String> dishes;
-  late double total;
-
-  Order() {
-    dishes = List.generate(1, (_) => "oguz");
-    total = 10;
-  }
-
-  Order.fromJson(Map<String, dynamic> json)
-      : dishes = List.from(json['dishes'] as List),
-        total = json['total'] as double,
-        super.fromJson(json);
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'dishes': dishes,
-        'total': total,
-      };
+*/
 }
